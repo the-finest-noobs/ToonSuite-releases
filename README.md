@@ -4,7 +4,7 @@ Downloads for the ToonSuite apps: tools for multi-tooners on Toontown Rewritten 
 
 | App | What it does | Platforms |
 |---|---|---|
-| **Tunetoon** | A launcher for all your toons. Save your accounts, and start any set of toons simultaneously. | Windows and MacOS |
+| **Tunetoon** | A launcher for all your toons. Save your accounts, and start any set of toons simultaneously. | Windows, macOS and Linux |
 | **Multicontroller** | Control multiple toons simultaneously. | Windows |
 
 ## Download
@@ -13,10 +13,10 @@ Everything lives on the [**Releases**](../../releases) page. The whole suite shi
 tagged `vX.Y.Z` (e.g. `v1.0.0`), open the [**latest release**](../../releases/latest) and grab the file for your
 app and system:
 
-| App | Windows | macOS |
-|---|---|---|
-| Tunetoon | `Tunetoon.exe` | `Tunetoon-macos-arm64.zip` (Apple Silicon) · `Tunetoon-macos-x64.zip` (Intel) |
-| Multicontroller | `Multicontroller.exe` | — |
+| App | Windows | macOS | Linux |
+|---|---|---|---|
+| Tunetoon | `Tunetoon.exe` | `Tunetoon-macos-arm64.zip` (Apple Silicon) · `Tunetoon-macos-x64.zip` (Intel) | `Tunetoon-Linux.AppImage` |
+| Multicontroller | `Multicontroller.exe` | — | — |
 
 There is no installer. Each download is a single self-contained program. Put it in a folder and run it.
 
@@ -36,6 +36,43 @@ Tunetoon ships two macOS builds: `Tunetoon-macos-arm64.zip` (Apple Silicon) and 
 1. Download the zip for your Mac and unzip it.
 2. Drag `Tunetoon.app` anywhere you like.
 3. On first launch, right-click (or Control-click) the app and choose **Open**, then **Open** again. macOS shows a warning because the app is not notarized with Apple. This happens only the first time.
+
+### Linux (Tunetoon)
+
+#### AppImage
+
+1. Download `Tunetoon-x86_64.AppImage` from the [latest release](../../releases/latest).
+2. Make it executable and run it:
+   ```bash
+   chmod +x Tunetoon-x86_64.AppImage
+   ./Tunetoon-x86_64.AppImage
+   ```
+
+Some distros require `libfuse2` for AppImages to run:
+```bash
+# Ubuntu / Mint
+sudo apt install libfuse2
+```
+
+#### NixOS (declarative install)
+
+Add Tunetoon to your system or home-manager config:
+
+```nix
+# flake.nix inputs
+inputs.tunetoon.url = "github:the-finest-noobs/ToonSuite-releases";
+
+# NixOS — environment.systemPackages
+environment.systemPackages = [ inputs.tunetoon.packages.x86_64-linux.default ];
+
+# or home-manager — home.packages
+home.packages = [ inputs.tunetoon.packages.x86_64-linux.default ];
+```
+
+Or run without installing:
+```bash
+nix run github:the-finest-noobs/ToonSuite-releases
+```
 
 ## Staying up to date
 
