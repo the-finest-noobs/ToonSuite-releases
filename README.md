@@ -4,19 +4,21 @@ Downloads for the ToonSuite apps: tools for multi-tooners on Toontown Rewritten 
 
 | App | What it does | Platforms |
 |---|---|---|
-| **Tunetoon** | A launcher for all your toons. Save your accounts, and start any set of toons simultaneously. | Windows and MacOS |
-| **Multicontroller** | Control multiple toons simultaneously. | Windows |
+| **Tunetoon** | A launcher for all your toons. Save your accounts, and start any set of toons simultaneously. | Windows, macOS (beta), Linux |
+| **Multicontroller** | Control multiple toons simultaneously. | Windows, macOS (beta) |
+
+Multicontroller on Linux is not available yet.
 
 ## Download
 
 Everything lives on the [**Releases**](../../releases) page. The whole suite ships as **one release per version**,
-tagged `vX.Y.Z` (e.g. `v1.0.0`), open the [**latest release**](../../releases/latest) and grab the file for your
+tagged `vX.Y.Z` (e.g. `v1.1.0`). Open the [**latest release**](../../releases/latest) and grab the file for your
 app and system:
 
-| App | Windows | macOS |
-|---|---|---|
-| Tunetoon | `Tunetoon.exe` | `Tunetoon-macos-arm64.zip` (Apple Silicon) · `Tunetoon-macos-x64.zip` (Intel) |
-| Multicontroller | `Multicontroller.exe` | — |
+| App | Windows | macOS (beta) | Linux |
+|---|---|---|---|
+| Tunetoon | `Tunetoon.exe` | `Tunetoon-macos-arm64.zip` (Apple Silicon) · `Tunetoon-macos-x64.zip` (Intel) | `Tunetoon-Linux.AppImage` |
+| Multicontroller | `Multicontroller.exe` | `Multicontroller-macos-arm64.zip` (Apple Silicon) · `Multicontroller-macos-x64.zip` (Intel) | not available yet |
 
 There is no installer. Each download is a single self-contained program. Put it in a folder and run it.
 
@@ -29,17 +31,40 @@ There is no installer. Each download is a single self-contained program. Put it 
    - **Tunetoon** stores its data under `%LocalAppData%\Tunetoon`, so you can move or overwrite the exe freely without losing your accounts.
 2. On the first run of a new version, Windows SmartScreen may show a blue "Windows protected your PC" box because the app is not code signed. Click **More info**, then **Run anyway**. You only see this once per version.
 
-### macOS (Tunetoon)
+### macOS (beta)
 
-Tunetoon ships two macOS builds: `Tunetoon-macos-arm64.zip` (Apple Silicon) and `Tunetoon-macos-x64.zip` (Intel). To install:
+The macOS builds are still experimental. Both apps ship two of them: `-macos-arm64.zip` for Apple Silicon and
+`-macos-x64.zip` for an Intel Mac.
 
 1. Download the zip for your Mac and unzip it.
-2. Drag `Tunetoon.app` anywhere you like.
+2. Drag `Tunetoon.app` (or `Multicontroller.app`) anywhere you like.
 3. On first launch, right-click (or Control-click) the app and choose **Open**, then **Open** again. macOS shows a warning because the app is not notarized with Apple. This happens only the first time.
+   - On macOS 15 and newer you may instead have to open **System Settings**, go to **Privacy and Security**, and click **Open Anyway**.
+4. **Multicontroller only:** it needs **Accessibility** permission before it can drive your game windows. Open **System Settings**, go to **Privacy and Security**, then **Accessibility**, and switch Multicontroller on. macOS treats each update as a new app, so you have to grant this again after every update.
+
+### Linux (Tunetoon)
+
+1. Download `Tunetoon-Linux.AppImage`.
+2. Make it executable and run it:
+
+   ```bash
+   chmod +x Tunetoon-Linux.AppImage
+   ./Tunetoon-Linux.AppImage
+   ```
+
+   - If it complains that a FUSE library is missing, run it as `./Tunetoon-Linux.AppImage --appimage-extract-and-run` instead, or install your distro's `libfuse2` package.
+3. Toontown Rewritten runs on Linux directly. Corporate Clash does not, so you need a compatibility layer such as [Bottles](https://usebottles.com/) or Wine to launch Clash toons.
+
+Updates are not automatic on Linux. The app tells you when a new version is out, and you download the new AppImage from the [releases](../../releases/latest) page.
 
 ## Staying up to date
 
-You only need to download from here once. Both apps check for a newer release when they start, and you can also check any time from **About > Check for updates**. Updates download and install in place, then relaunch the app. On macOS the in-app update does not retrigger the first-launch warning.
+On Windows and macOS you only need to download from here once. Both apps check for a newer release when they
+start, and you can also check any time from **About > Check for updates**. Updates download and install in place,
+then relaunch the app. On macOS the in-app update does not retrigger the first-launch warning, but it does reset
+Multicontroller's Accessibility permission, so grant that again after an update.
+
+On Linux, updates are manual: download the new AppImage from the releases page.
 
 ## Verifying a download
 
@@ -49,6 +74,12 @@ On Windows PowerShell:
 
 ```powershell
 Get-FileHash .\Tunetoon.exe -Algorithm SHA256
+```
+
+On macOS or Linux:
+
+```bash
+shasum -a 256 Tunetoon-Linux.AppImage
 ```
 
 Compare the printed hash against the matching line in the checksum file.
