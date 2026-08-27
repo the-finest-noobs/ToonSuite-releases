@@ -5,9 +5,7 @@ Downloads for the ToonSuite apps: tools for multi-tooners on Toontown Rewritten 
 | App | What it does | Platforms |
 |---|---|---|
 | **Tunetoon** | A launcher for all your toons. Save your accounts, and start any set of toons simultaneously. | Windows, macOS (beta), Linux |
-| **Multicontroller** | Control multiple toons simultaneously. | Windows, macOS (beta) |
-
-Multicontroller on Linux is not available yet.
+| **Multicontroller** | Control multiple toons simultaneously. | Windows, macOS (beta), Linux (beta) |
 
 ## Download
 
@@ -18,7 +16,7 @@ app and system:
 | App | Windows | macOS (beta) | Linux |
 |---|---|---|---|
 | Tunetoon | `Tunetoon.exe` | `Tunetoon-macos-arm64.zip` (Apple Silicon) · `Tunetoon-macos-x64.zip` (Intel) | `Tunetoon-Linux.AppImage` |
-| Multicontroller | `Multicontroller.exe` | `Multicontroller-macos-arm64.zip` (Apple Silicon) · `Multicontroller-macos-x64.zip` (Intel) | not available yet |
+| Multicontroller | `Multicontroller.exe` | `Multicontroller-macos-arm64.zip` (Apple Silicon) · `Multicontroller-macos-x64.zip` (Intel) | `Multicontroller-Linux.AppImage` (beta) |
 
 There is no installer. Each download is a single self-contained program. Put it in a folder and run it.
 
@@ -42,9 +40,11 @@ The macOS builds are still experimental. Both apps ship two of them: `-macos-arm
    - On macOS 15 and newer you may instead have to open **System Settings**, go to **Privacy and Security**, and click **Open Anyway**.
 4. **Multicontroller only:** it needs **Accessibility** permission before it can drive your game windows. Open **System Settings**, go to **Privacy and Security**, then **Accessibility**, and switch Multicontroller on. macOS treats each update as a new app, so you have to grant this again after every update.
 
-### Linux (Tunetoon)
+### Linux
 
-1. Download `Tunetoon-Linux.AppImage`.
+Both apps ship as AppImages: `Tunetoon-Linux.AppImage` and `Multicontroller-Linux.AppImage` (beta).
+
+1. Download the AppImage you want.
 2. Make it executable and run it:
 
    ```bash
@@ -52,10 +52,10 @@ The macOS builds are still experimental. Both apps ship two of them: `-macos-arm
    ./Tunetoon-Linux.AppImage
    ```
 
-   - If it complains that a FUSE library is missing, run it as `./Tunetoon-Linux.AppImage --appimage-extract-and-run` instead, or install your distro's `libfuse2` package.
+   - If it complains that a FUSE library is missing, run it with `--appimage-extract-and-run` instead, or install your distro's `libfuse2` package.
 3. Toontown Rewritten runs on Linux directly. Corporate Clash does not, so you need a compatibility layer such as [Bottles](https://usebottles.com/) or Wine to launch Clash toons.
 
-Updates are not automatic on Linux. The app tells you when a new version is out, and you download the new AppImage from the [releases](../../releases/latest) page.
+Multicontroller on Linux is beta. It needs an X11 session (it also works under XWayland) and controls native Toontown Rewritten windows out of the box. Corporate Clash runs under Wine, so Clash support is experimental: run Clash on the host display (turn off the nested display option in Tunetoon) for Multicontroller to reach its windows.
 
 ## Staying up to date
 
@@ -64,7 +64,7 @@ start, and you can also check any time from **About > Check for updates**. Updat
 then relaunch the app. On macOS the in-app update does not retrigger the first-launch warning, but it does reset
 Multicontroller's Accessibility permission, so grant that again after an update.
 
-On Linux, updates are manual: download the new AppImage from the releases page.
+On Linux, Multicontroller updates itself in place like the other builds: it swaps its own AppImage and relaunches. Tunetoon on Linux is manual for now: it tells you when a new version is out, and you download the new AppImage from the releases page.
 
 ## Verifying a download
 
