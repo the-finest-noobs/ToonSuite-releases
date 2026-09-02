@@ -38,7 +38,7 @@ The macOS builds are still experimental. Both apps ship two of them: `-macos-arm
 2. Drag `Tunetoon.app` (or `Multicontroller.app`) anywhere you like.
 3. On first launch, right-click (or Control-click) the app and choose **Open**, then **Open** again. macOS shows a warning because the app is not notarized with Apple. This happens only the first time.
    - On macOS 15 and newer you may instead have to open **System Settings**, go to **Privacy and Security**, and click **Open Anyway**.
-4. **Multicontroller only:** it needs **Accessibility** permission before it can drive your game windows. Open **System Settings**, go to **Privacy and Security**, then **Accessibility**, and switch Multicontroller on.
+4. **Multicontroller only:** it needs **Accessibility** permission before it can drive your game windows. Open **System Settings**, go to **Privacy and Security**, then **Accessibility**, and switch Multicontroller on. macOS treats each update as a new app, so you have to grant this again after every update.
 
 ### Linux
 
