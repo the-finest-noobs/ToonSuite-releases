@@ -38,7 +38,7 @@ The macOS builds are still experimental. Both apps ship two of them: `-macos-arm
 2. Drag `Tunetoon.app` (or `Multicontroller.app`) anywhere you like.
 3. On first launch, right-click (or Control-click) the app and choose **Open**, then **Open** again. macOS shows a warning because the app is not notarized with Apple. This happens only the first time.
    - On macOS 15 and newer you may instead have to open **System Settings**, go to **Privacy and Security**, and click **Open Anyway**.
-4. **Multicontroller only:** it needs **Accessibility** permission before it can drive your game windows. Open **System Settings**, go to **Privacy and Security**, then **Accessibility**, and switch Multicontroller on. macOS treats each update as a new app, so you have to grant this again after every update.
+4. **Multicontroller only:** it needs **Accessibility** permission before it can drive your game windows. Open **System Settings**, go to **Privacy and Security**, then **Accessibility**, and switch Multicontroller on. You do this once: since 1.1.3 every release is signed with the same identity, so the permission survives updates. If you are updating from 1.1.2 or older, grant it one more time and it sticks from then on.
 
 ### Linux
 
@@ -61,8 +61,8 @@ Multicontroller on Linux is beta. It needs an X11 session (it also works under X
 
 On Windows and macOS you only need to download from here once. Both apps check for a newer release when they
 start, and you can also check any time from **About > Check for updates**. Updates download and install in place,
-then relaunch the app. On macOS the in-app update does not retrigger the first-launch warning, but it does reset
-Multicontroller's Accessibility permission, so grant that again after an update.
+then relaunch the app. On macOS the in-app update does not retrigger the first-launch warning, and from 1.1.3 on it keeps
+Multicontroller's Accessibility permission too. Updating from 1.1.2 or older resets it one last time.
 
 On Linux, Multicontroller updates itself in place like the other builds: it swaps its own AppImage and relaunches. Tunetoon on Linux is manual for now: it tells you when a new version is out, and you download the new AppImage from the releases page.
 
