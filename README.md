@@ -35,10 +35,11 @@ The macOS builds are still experimental. Both apps ship two of them: `-macos-arm
 `-macos-x64.zip` for an Intel Mac.
 
 1. Download the zip for your Mac and unzip it.
-2. Drag `Tunetoon.app` (or `Multicontroller.app`) anywhere you like.
+2. Drag `Tunetoon.app` (or `Multicontroller.app`) into your **Applications** folder in Finder before you open it.
+   - Opened straight from the folder it was unzipped in, macOS runs it as a temporary read only copy, which can keep in app updates from installing.
 3. On first launch, right-click (or Control-click) the app and choose **Open**, then **Open** again. macOS shows a warning because the app is not notarized with Apple. This happens only the first time.
    - On macOS 15 and newer you may instead have to open **System Settings**, go to **Privacy and Security**, and click **Open Anyway**.
-4. **Multicontroller only:** it needs **Accessibility** permission before it can drive your game windows. Open **System Settings**, go to **Privacy and Security**, then **Accessibility**, and switch Multicontroller on. You do this once: since 1.1.3 every release is signed with the same identity, so the permission survives updates. If you are updating from 1.1.2 or older, grant it one more time and it sticks from then on.
+4. **Multicontroller only:** it needs **Accessibility** permission before it can drive your game windows. Open **System Settings**, go to **Privacy and Security**, then **Accessibility**, and switch Multicontroller on. You do this once and it survives updates. If Multicontroller keeps asking for it while it is already switched on, select Multicontroller in that list, remove it with the minus button, then reopen Multicontroller and switch it on.
 
 ### Linux
 
@@ -83,3 +84,7 @@ shasum -a 256 Tunetoon-Linux.AppImage
 ```
 
 Compare the printed hash against the matching line in the checksum file.
+
+## AI Disclosure
+
+ToonSuite's code is written with the help of AI tools, used for implementing, debugging and reviewing. Every change is reviewed, adjusted by hand where needed, and tested before release.
